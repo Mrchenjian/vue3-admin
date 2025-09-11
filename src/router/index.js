@@ -1,7 +1,12 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
 const routes = [
-  { path: '/', component: ()=>import('../views/home/index.vue') },
+
+  { 
+    // 组件二次封装
+    path: '/', 
+    component: () => import('../views/home/index.vue') 
+  },
   // { path: '/about', component: AboutView },
 ]
 
