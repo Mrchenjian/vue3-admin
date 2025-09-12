@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-input v-bind="$attrs">
+		<el-input ref="inputRef" v-bind="$attrs">
 			<!-- 1、具名插槽  用户传什么插槽内容  就给组件透传什么内容 -->
 			/** * 2、事件透传 template 标签作用是遍历 组件内置插槽 避免一个一个去写 *
 			同样通过用户传递过来的插槽内容 用template 包裹 保证插槽内容是透传的 */
@@ -14,8 +14,26 @@
 </template>
 
 <script setup lang="ts">
+import { ref, defineExpose } from "vue";
 import { ElInput, type InputProps } from "element-plus";
 const props = defineProps<Partial<InputProps>>();
+const inputRef = ref<InstanceType<typeof ElInput>>();
+defineExpose(
+	new Proxy(
+		{} as InstanceType<typeof ElInput>,
+		{
+			get(_, key) {
+				if (typeof key === "string" || typeof key === "symbol") {
+					return inputRef.value?.[key as keyof typeof inputRef.value];
+				}
+				return undefined;
+			},
+			has(_, key) {
+				return key in (inputRef.value || {});
+			},
+		}
+	)
+);
 </script>
 
 <style scoped lang="scss"></style>

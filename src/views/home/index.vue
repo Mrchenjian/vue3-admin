@@ -5,7 +5,7 @@
 		<p>2、事件透传</p>
 		<p>3、插槽透传</p>
 		<p>4、为组件添加类型</p>
-		<MyInput v-model="input" style="width: 400px" placeholder="Please input">
+		<MyInput ref="myInputRef"  v-model="input" style="width: 400px" placeholder="Please input">
 			<template #prepend>
 				<el-select
 					v-model="selectValue"
@@ -21,19 +21,27 @@
 				<el-button :icon="Search" />
 			</template>
 		</MyInput>
+
+		<el-button @click="focus">Focus</el-button>
 	</div>
 </template>
 
 <script setup lang="ts">
-import MyInput from "./componnet/MyInput.vue";
+import MyInput from "./component/MyInput.vue";
 import { Search } from "@element-plus/icons-vue";
 import { defineOptions, ref } from "vue";
 defineOptions({
 	name: "",
 });
-
+let myInputRef = ref<InstanceType<typeof MyInput>>();
 let input = ref("");
 let selectValue = ref("");
+
+
+const focus = () => {
+    myInputRef.value?.focus();
+}
+
 </script>
 
 <style scoped lang="scss"></style>
