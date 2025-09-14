@@ -1,17 +1,18 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createMemoryHistory, createRouter,createWebHashHistory } from 'vue-router'
 
 const routes = [
 
-  { 
+  {
     // 组件二次封装
-    path: '/', 
-    component: () => import('../views/home/index.vue') 
+    path: '/',
+    component: () => import('@/views/home/index.vue')
   },
-  // { path: '/about', component: AboutView },
+  // 动态表单
+  { path: '/form', component: () => import('@/views/form/index.vue') },
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 

@@ -9,7 +9,19 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    // 提供类型提示
+     "types": ["node","vite/client","element-plus/global"],
+
+    // 解析非相对模块的基础地址，默认是当前目录
+     "baseUrl": ".",
+       "paths": {
+      //  @有提示 路径映射，相对于baseUrl
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "exclude": [
+    "node_modules"
+  ]
 }
