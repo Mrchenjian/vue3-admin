@@ -1,8 +1,8 @@
 @import "./var.module.scss";
 
 // 将scss变量映射到css变量
-:root{
+:root {
     --sidbar-width: #{$sideBarWidth};
-    --navbar-height:#{$navBarHeight};
+    --navbar-height: #{$navBarHeight};
     --tagview-height: #{$tagsViewHeight};
 }

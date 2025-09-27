@@ -11,7 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     // 提供类型提示
-     "types": ["node","vite/client","element-plus/global"],
+     "types": ["node","vite/client","element-plus/global","auto-imports.d.ts","components.d.ts"],
 
     // 解析非相对模块的基础地址，默认是当前目录
      "baseUrl": ".",
